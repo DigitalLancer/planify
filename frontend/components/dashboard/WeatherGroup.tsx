@@ -1,6 +1,6 @@
-import { ForecastDay } from '@/types/weather'
+import { DailyDisplay } from '@/types/weather'
 import Image from 'next/image'
-import React from 'react'
+import { getWmoInfo, getLocalWeatherIconPath } from "@/lib/wmoIcons";
 
 function getTurkishDayName(dateStr: string) {
     return new Intl.DateTimeFormat("en-EN", {
@@ -8,11 +8,14 @@ function getTurkishDayName(dateStr: string) {
     }).format(new Date(dateStr));
 }
 
-type WeatherGroupProps = ForecastDay & {
-  active?: boolean
+type WeatherGroupProps = DailyDisplay & {
+    active?: boolean
 }
 
-function WeatherGroup({active, ...props}: WeatherGroupProps) {
+function WeatherGroup({ active, ...props }: WeatherGroupProps) {
+    const info = getWmoInfo(props.weatherCode);
+    const iconPath = getLocalWeatherIconPath(props.weatherCode, true, "png");
+    if (!info || !iconPath) return null;
     return (
         <div className={`
         flex flex-col items-center pb-2
@@ -23,14 +26,14 @@ function WeatherGroup({active, ...props}: WeatherGroupProps) {
             </div>
             <div>
                 <Image
-                    src={`https:${props.day.condition.icon}`}
-                    alt={props.day.condition.text}
+                    src={iconPath}
+                    alt={info.longDescription}
                     width={36}
                     height={36}
                 />
             </div>
             <div>
-                {props.day.avgtemp_c}°C
+                {props.tempMax}°C
             </div>
         </div>
     )

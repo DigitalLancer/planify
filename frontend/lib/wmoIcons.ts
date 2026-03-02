@@ -68,5 +68,5 @@ export function getLocalWeatherIconPath(
   if (!info) return null;
 
   const suffix = isDay ? "d" : "n";
-  return `/icons/${info.mapIcon}${suffix}.${ext}`;
+  return `/weather_icons/${info.mapIcon}${suffix}.${ext}`;
 }
