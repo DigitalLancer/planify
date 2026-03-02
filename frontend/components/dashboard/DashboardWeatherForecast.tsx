@@ -9,6 +9,8 @@ async function getWeatherData(): Promise<ForecastResponse> {
     return res.json();
 }
 
+
+
 async function DashboardWeatherForecast() {
     const data = await getWeatherData();
     console.log(data);
