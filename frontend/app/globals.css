@@ -1,9 +1,22 @@
+@import "@syncfusion/ej2-base/styles/tailwind3.css";
+@import "@syncfusion/ej2-buttons/styles/tailwind3.css";
+@import "@syncfusion/ej2-popups/styles/tailwind3.css";
+@import "@syncfusion/ej2-inputs/styles/tailwind3.css";
+@import "@syncfusion/ej2-calendars/styles/tailwind3.css";
+@import "@syncfusion/ej2-react-calendars/styles/tailwind3.css";
+
 @import "tailwindcss";
+
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
+.dashboard-calendar.e-calendar {
+  max-width: none !important;
+  border:none;
+}
+
 
 @theme inline {
   --color-background: var(--background);

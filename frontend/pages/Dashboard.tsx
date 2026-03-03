@@ -1,7 +1,7 @@
 import DashboardEventList from '@/components/dashboard/DashboardEventList'
 import DashboardHero from '../components/dashboard/DahsboardHero'
-import React from 'react'
 import DashboardWeatherForecast from '@/components/dashboard/DashboardWeatherForecast'
+import DashboardCalendar from '@/components/dashboard/DashboardCalendar'
 
 async function Dashboard() {
 
@@ -21,13 +21,15 @@ async function Dashboard() {
                         <div className="bg-white shadow rounded-2xl min-w-30">
                             Left
                         </div>
-                        <div className="bg-white shadow rounded-2xl min-w-30">
-                            Right
+                        <div className="bg-white shadow rounded-2xl min-w-30 p-4">
+                            <div className='w-full h-full flex justify-center items-center'>
+                                <DashboardCalendar />
+                            </div>
                         </div>
                     </div>
 
                     <div className="bg-white shadow h-full rounded-2xl md:row-span-2 flex items-center justify-center p-2 overflow-hidden">
-                        <DashboardWeatherForecast/>
+                        <DashboardWeatherForecast />
                     </div>
                 </div>
             </div>
