@@ -1,5 +1,31 @@
 [
   {
+    "id": 5,
+    "title": "Kış Kampı",
+    "description": "Uludağ'da hafta sonu kamp etkinliği.",
+    "startDate": "2026-01-15T14:00:00",
+    "endDate": "2026-01-17T12:00:00",
+    "location": "Uludağ, Bursa",
+    "status": "cancelled"
+  },
+  {
+    "id": 7,
+    "title": "Akşam Kahve Buluşması",
+    "description": "Yeni projeler üzerine sohbet.",
+    "startDate": "2026-02-10T19:00:00",
+    "location": "Kadıköy",
+    "status": "completed"
+  },
+  {
+    "id": 3,
+    "title": "Hafta Sonu Pikniği",
+    "description": "Arkadaşlarla sahilde piknik organizasyonu.",
+    "startDate": "2026-03-04T11:00:00",
+    "endDate": "2026-02-20T16:00:00",
+    "location": "Caddebostan Sahili",
+    "status": "completed"
+  },
+  {
     "id": 1,
     "title": "Doğa Yürüyüşü",
     "description": "Belgrad Ormanı'nda sabah yürüyüşü ve kahvaltı.",
@@ -7,24 +33,6 @@
     "endDate": "2026-03-05T13:00:00",
     "location": "Belgrad Ormanı, İstanbul",
     "status": "upcoming"
-  },
-  {
-    "id": 2,
-    "title": "Frontend Meetup",
-    "description": "React ve Next.js üzerine teknik paylaşım etkinliği.",
-    "startDate": "2026-03-08T18:30:00",
-    "endDate": "2026-03-08T21:00:00",
-    "location": "Kolektif House, Levent",
-    "status": "upcoming"
-  },
-  {
-    "id": 3,
-    "title": "Hafta Sonu Pikniği",
-    "description": "Arkadaşlarla sahilde piknik organizasyonu.",
-    "startDate": "2026-02-20T11:00:00",
-    "endDate": "2026-02-20T16:00:00",
-    "location": "Caddebostan Sahili",
-    "status": "completed"
   },
   {
     "id": 4,
@@ -36,27 +44,10 @@
     "status": "upcoming"
   },
   {
-    "id": 5,
-    "title": "Kış Kampı",
-    "description": "Uludağ'da hafta sonu kamp etkinliği.",
-    "startDate": "2026-01-15T14:00:00",
-    "endDate": "2026-01-17T12:00:00",
-    "location": "Uludağ, Bursa",
-    "status": "cancelled"
-  },
-  {
     "id": 6,
     "title": "Tech Career Day",
     "startDate": "2026-03-25T09:30:00",
     "location": "Bahçeşehir Üniversitesi",
     "status": "upcoming"
-  },
-  {
-    "id": 7,
-    "title": "Akşam Kahve Buluşması",
-    "description": "Yeni projeler üzerine sohbet.",
-    "startDate": "2026-02-10T19:00:00",
-    "location": "Kadıköy",
-    "status": "completed"
   }
 ]

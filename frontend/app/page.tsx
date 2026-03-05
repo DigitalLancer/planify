@@ -4,6 +4,7 @@ import {
   AxisModel, MarkerSettingsModel, Category, ChartComponent, ColumnSeries, DataLabel, Inject,
   Legend, LegendSeriesModel, LineSeries, SeriesCollectionDirective, SeriesDirective, Tooltip, TooltipSettingsModel, BarSeries
 } from '@syncfusion/ej2-react-charts';
+import DashboradWeeklyOverview from "@/components/dashboard/DashboardWeeklyOverview";
 
 export default function Home() {
   const data: Object[] = [
@@ -27,13 +28,7 @@ export default function Home() {
   return (
     <>
       <h2>Syncfusion React Chart Component</h2>
-      <ChartComponent id="charts" primaryXAxis={primaryXAxis} legendSettings={legendSettings}
-        primaryYAxis={primaryYAxis} title='Unemployment rate (%)'>
-        <Inject services={[BarSeries, Legend, Tooltip, DataLabel, Category]} />
-        <SeriesCollectionDirective>
-          <SeriesDirective dataSource={data} xName='x' yName='y' name='India' type='Bar' />
-        </SeriesCollectionDirective>
-      </ChartComponent>
+      <DashboradWeeklyOverview></DashboradWeeklyOverview>
     </>
   )
 }

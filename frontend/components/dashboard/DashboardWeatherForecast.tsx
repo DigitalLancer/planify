@@ -24,7 +24,6 @@ export function mergeApiData(daily: DailyForecastResponse): DailyForecastDisplay
 async function DashboardWeatherForecast() {
     const data = await getWeatherData();
     const forecast = mergeApiData(data.daily);
-    console.log(forecast);
     return (
         <div className='w-full flex justify-around'>
             {forecast.map((forecastDay, index) => (
