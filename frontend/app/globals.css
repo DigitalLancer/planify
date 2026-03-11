@@ -17,6 +17,12 @@
   border:none;
 }
 
+@layer utilities {
+  /* Alternatif yamukluklar - index'e göre değişecek */
+  .wobbly-1 { border-radius: 255px 15px 225px 15px/15px 225px 15px 255px; }
+  .wobbly-2 { border-radius: 15px 225px 15px 255px/225px 15px 255px 15px; }
+  .wobbly-3 { border-radius: 5px 10px 5px 10px/100px 5px 100px 5px; }
+}
 
 @theme inline {
   --color-background: var(--background);
@@ -34,7 +40,7 @@
 
 body {
   background: var(--background);
-  background-color: #FAF5FF;
+  background-color: #fdfbf7;
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
   box-sizing: border-box;

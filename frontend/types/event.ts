@@ -6,5 +6,25 @@ export interface EventItem {
   endDate?: string
   location?: string
   status: Status
+  category?: Category
 }
 export type Status="upcoming" | "completed" | "cancelled";
+export type Category =
+  | "work"
+  | "social"
+  | "exercise"
+  | "education"
+  | "entertainment"
+  | "community"
+  | "other";
+  
+
+export const categories: Category[] = [
+  "work",
+  "social",
+  "exercise",
+  "education",
+  "entertainment",
+  "community",
+  "other",
+];

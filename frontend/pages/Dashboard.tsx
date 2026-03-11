@@ -1,42 +1,151 @@
-import DashboardEventList from '@/components/dashboard/DashboardEventList'
-import DashboardHero from '../components/dashboard/DahsboardHero'
-import DashboardWeatherForecast from '@/components/dashboard/DashboardWeatherForecast'
-import DashboardCalendar from '@/components/dashboard/DashboardCalendar'
-import DashboardWeeklyOverview from '@/components/dashboard/DashboardWeeklyOverview'
 
+import { CalendarDays, CheckCircle2, Clock3, Sparkles } from "lucide-react";
+import DashboardCalendar from "@/components/dashboard/DashboardCalendar";
+import DashboardEventList from "@/components/dashboard/DashboardEventList";
+import DashboardWeeklyOverview from "@/components/dashboard/DashboardWeeklyOverview";
+import DashboardHero from "@/components/dashboard/DahsboardHero";
+import StatCard from "@/components/dashboard/StatCard";
+import CreateEventModal from "@/components/CreateEventModal";
+import Link from "next/link";
 
-export default function Dashboard() {
+const wobblyBorder = "rounded-[255px_15px_225px_15px/15px_225px_15px_255px]";
+
+export default function DashboardPage() {
+
   return (
-    <div className="h-full flex flex-col gap-5 text-slate-900 min-h-0">
-      <div className="h-[200px] shrink-0">
-        <DashboardHero />
-      </div>
+    <div className="min-h-screen bg-[#fdfbf7] p-4 md:p-8 font-serif text-slate-800 selection:bg-yellow-200">
+      <div className="mx-auto max-w-7xl relative">
 
-      <div className="min-h-0 flex-1 grid grid-cols-1 lg:grid-cols-2 gap-5">
-        <div className="bg-white rounded-2xl p-4 shadow ring-1 ring-slate-200 min-w-0 min-h-0 overflow-auto">
-          <h2 className="text-lg mb-5 font-semibold">Upcoming Events</h2>
-          <DashboardEventList />
-        </div>
-
-        <div className="grid grid-cols-1 gap-5 min-w-0 min-h-0 lg:grid-rows-[auto_minmax(0,1fr)]">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 min-h-0">
-            <div className="bg-white shadow rounded-2xl min-w-0 ring-1 ring-slate-200 min-h-[180px]" />
-
-            <div className="bg-white shadow rounded-2xl p-4 ring-1 ring-slate-200 min-h-0 min-w-0">
-              <div className="w-full md:aspect-square overflow-hidden">
-                <DashboardCalendar />
-              </div>
-            </div>
+        <div className="flex flex-col gap-8">
+          <div className="relative group">
+            <DashboardHero />
+            <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-24 h-8 bg-blue-400/30 -rotate-2 backdrop-blur-sm border-x border-blue-500/20 shadow-sm" />
           </div>
 
-          <div className="bg-white shadow rounded-2xl p-5 ring-1 ring-slate-200 min-w-0">
-            <h2 className="text-lg mb-3 font-semibold">Weekly Overview</h2>
-            <div className="h-48 sm:h-56 lg:h-64">
-              <DashboardWeeklyOverview />
+          {/* İstatistik Kartları */}
+          <section className="grid grid-cols-2 gap-6 sm:grid-cols-2 xl:grid-cols-4">
+            <StatCard
+              title="Today"
+              value="2"
+              subtitle="events scheduled"
+              icon={<Clock3 className="h-5 w-5" />}
+              bgcolor="bg-sky-100/70" // Suluboya efekti için opacity
+              rotate="-rotate-1"
+            />
+            <StatCard
+              title="This Week"
+              value="6"
+              subtitle="planned activities"
+              icon={<CalendarDays className="h-5 w-5" />}
+              bgcolor="bg-purple-100/70"
+              rotate="rotate-1"
+            />
+            <StatCard
+              title="Total"
+              value="12"
+              subtitle="future events"
+              icon={<Sparkles className="h-5 w-5" />}
+              bgcolor="bg-orange-100/70"
+              rotate="-rotate-1"
+            />
+            <StatCard
+              title="Completed"
+              value="18"
+              subtitle="done this month"
+              icon={<CheckCircle2 className="h-5 w-5" />}
+              bgcolor="bg-emerald-100/70"
+              rotate="rotate-2"
+            />
+          </section>
+
+          <section className="grid grid-cols-1 gap-8 xl:grid-cols-12">
+            <div className="xl:col-span-7">
+              <JournalCard>
+                <SectionHeader
+                  title="Upcoming Events"
+                  description="Your next plans at a glance"
+                  actionLabel="View all"
+                />
+                <div className="mt-5">
+                  <DashboardEventList />
+                </div>
+              </JournalCard>
             </div>
-          </div>
+
+            <div className="xl:col-span-5 flex flex-col gap-8">
+              <JournalCard>
+                <SectionHeader
+                  title="Quick Actions"
+                  description="Shortcuts for faster planning"
+                />
+                <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <QuickActionButton label="Add Event" color="bg-yellow-100" />
+                  <QuickActionButton label="Plan Weekend" color="bg-pink-100" />
+                  <QuickActionButton label="Invite Friends" color="bg-blue-100" />
+                  <QuickActionButton label="Create Reminder" color="bg-green-100" />
+                </div>
+              </JournalCard>
+
+              <JournalCard>
+                <SectionHeader
+                  title="Calendar"
+                  description="Pick a day"
+                />
+                <div className="mt-5 flex justify-center">
+                  <DashboardCalendar />
+                </div>
+              </JournalCard>
+            </div>
+          </section>
         </div>
       </div>
     </div>
+  );
+}
+
+// --- Alt Bileşenler (Styled) ---
+
+function JournalCard({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  return (
+    <div className={`
+      bg-white border-2 border-slate-900/10 p-6 shadow-[5px_5px_0px_0px_rgba(0,0,0,0.05)]
+      ${wobblyBorder} ${className}
+    `}>
+      {children}
+    </div>
+  );
+}
+
+
+function SectionHeader({ title, description, actionLabel }: any) {
+  return (
+    <div className="flex items-start justify-between gap-4 border-b border-dashed border-slate-200 pb-4">
+      <div>
+        <h2 className="text-2xl font-handwriting text-slate-900 leading-none">
+          {title}
+        </h2>
+        {description && (
+          <p className="mt-1 text-sm font-mono opacity-60 italic">{description}</p>
+        )}
+      </div>
+      {actionLabel && (
+        <Link href={"/eventlist"} className="font-handwriting text-blue-600 hover:underline decoration-wavy">
+          {actionLabel}
+        </Link>
+      )
+      }
+    </div >
+  );
+}
+
+function QuickActionButton({ label, color }: { label: string; color: string }) {
+  return (
+    <button className={`
+      ${color} ${wobblyBorder} 
+      p-4 text-center font-handwriting text-lg border-b-2 border-r-2 border-black/10 
+      hover:brightness-95 active:translate-y-1 transition-all
+    `}>
+      {label}
+    </button>
   );
 }

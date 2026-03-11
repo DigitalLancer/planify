@@ -2,33 +2,55 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import "./navbar.css"
 
 export default function VerticalNavbar() {
   const pathname = usePathname();
 
   const menu = [
-    { label: "Dashboard", href: "/dashboard" },
-    { label: "Events List", href: "/eventlist" },
-    { label: "Calendar View", href: "/licenses" },
-    { label: "Settings", href: "/settings" },
+    { label: "Dashboard", href: "/dashboard", activeColor: "bg-blue-500" },
+    { label: "Events List", href: "/eventlist", activeColor: "bg-rose-500" },
+    { label: "Calendar View", href: "/licenses", activeColor: "bg-amber-500" },
+    { label: "Settings", href: "/settings", activeColor: "bg-emerald-500" },
   ];
 
   return (
-    <aside id="sidebar" className="bg-[#8B5CF6] px-3 py-8 text-white hidden md:block h-full w-35 text-center font-semibold">
-      <div className="w-full flex justify-center mb-5">
-        <div className="logo w-10 h-10 rounded-3xl bg-gray-100"></div>
+    <aside id="sidebar" className="bg-[#264b88] hidden md:flex flex-col h-full w-40 pt-10 relative overflow-visible shadow-[4px_0_15px_rgba(0,0,0,0.1)]">
+      <div className="w-full flex justify-center mb-12">
+        <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-[#1e293b] font-handwriting text-2xl rotate-[-8deg] shadow-[0_4px_0_0_#94a3b8] border-2 border-white">
+          N
+        </div>
       </div>
 
-      <nav className="flex flex-col gap-2">
+      <nav className="flex flex-col gap-5 w-full">
         {menu.map((item) => {
           const active = pathname === item.href;
+          
           return (
             <Link
               key={item.href}
               href={item.href}
+              className={`
+                relative font-serif group flex items-center py-3 pl-6 transition-all duration-300 ${active ? 'translate-x-2' : 'hover:translate-x-1'}`}
             >
-              {item.label}
+              {active && (
+                <div className={`
+                  absolute right-[-10px] top-0 bottom-0 left-4 
+                  ${item.activeColor} rounded-l-lg
+                  shadow-[-4px_0_10px_rgba(0,0,0,0.2)]
+                  z-10
+                `} />
+              )}
+
+              <span className={`
+                relative z-20 font-handwriting transition-colors
+                ${active ? 'text-white' : 'text-slate-100 group-hover:text-white'}
+              `}>
+                {item.label}
+              </span>
+              
+              {active && (
+                <div className="absolute right-0 w-1 h-6 bg-black/20 rounded-full z-20 mr-2" />
+              )}
             </Link>
           );
         })}
