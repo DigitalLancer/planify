@@ -12,7 +12,7 @@ namespace Planify.API.Controllers
         {
             new Event
             {
-                Id = 5,
+                Id = 1,
                 Title = "Kış Kampı",
                 Description = "Uludağ'da hafta sonu kamp etkinliği.",
                 StartDate = new(2026, 1, 15, 14, 0, 0),
@@ -21,7 +21,7 @@ namespace Planify.API.Controllers
             },
             new Event
             {
-                Id = 6,
+                Id = 2,
                 Title = "Yaz Festivali",
                 Description = "Deniz kenarında yaz festivali.",
                 StartDate = new(2026, 7, 20, 18, 0, 0),
@@ -30,7 +30,7 @@ namespace Planify.API.Controllers
             },
             new Event
             {
-                Id = 7,
+                Id = 3,
                 Title = "Sonbahar Pikniği",
                 Description = "Parkta sonbahar temalı piknik.",
                 StartDate = new(2026, 10, 5, 12, 0, 0),
@@ -39,7 +39,7 @@ namespace Planify.API.Controllers
             },
             new Event
             {
-                Id = 7,
+                Id = 4,
                 Title = "Akşam Kahve Buluşması",
                 Description = "Yeni projeler üzerine sohbet.",
                 StartDate = new DateTime(2026, 2, 10, 19, 0, 0),
@@ -48,7 +48,7 @@ namespace Planify.API.Controllers
             },
             new Event
             {
-                Id = 3,
+                Id = 5,
                 Title = "Hafta Sonu Pikniği",
                 Description = "Arkadaşlarla sahilde piknik organizasyonu.",
                 StartDate = new DateTime(2026, 3, 4, 11, 0, 0),
@@ -57,7 +57,7 @@ namespace Planify.API.Controllers
             },
             new Event
             {
-                Id = 1,
+                Id = 6,
                 Title = "Doğa Yürüyüşü",
                 Description = "Belgrad Ormanı'nda sabah yürüyüşü ve kahvaltı.",
                 StartDate = new DateTime(2026, 3, 5, 9, 0, 0),
@@ -66,7 +66,7 @@ namespace Planify.API.Controllers
             },
             new Event
             {
-                Id = 4,
+                Id = 7,
                 Title = "UI/UX Workshop",
                 Description = "Modern dashboard tasarımı üzerine workshop.",
                 StartDate = new DateTime(2026, 3, 12, 10, 0, 0),
@@ -75,7 +75,7 @@ namespace Planify.API.Controllers
             },
             new Event
             {
-                Id = 6,
+                Id = 8,
                 Title = "Tech Career Day",
                 StartDate = new DateTime(2026, 3, 25, 9, 30, 0),
                 Location = "Bahçeşehir Üniversitesi",
@@ -90,6 +90,7 @@ namespace Planify.API.Controllers
 
         }
 
+        [HttpGet("{id}")]
         public ActionResult<Event> GetEventById(int id)
         {
             var evnt = events.FirstOrDefault(e => e.Id == id);
@@ -98,6 +99,34 @@ namespace Planify.API.Controllers
                 return NotFound();
             }
             return Ok(evnt);
+        }
+
+        [HttpPost]
+        public ActionResult<Event> AddEvent(Event newEvent)
+        {
+            if (newEvent is null)
+            {
+                return BadRequest();
+            }
+            newEvent.Id = events.Max(e => e.Id) + 1;
+            events.Add(newEvent);
+            return CreatedAtAction(nameof(AddEvent), new { id = newEvent.Id }, newEvent);
+        }
+
+        [HttpPut("{id}")]
+        public ActionResult UpdateEvent(int id, Event updatedEvent)
+        {
+            var evnt = events.FirstOrDefault(e => e.Id == id);
+            if (evnt == null)
+            {
+                return NotFound();
+            }
+            evnt.Title = updatedEvent.Title;
+            evnt.Description = updatedEvent.Description;
+            evnt.StartDate = updatedEvent.StartDate;
+            evnt.Location = updatedEvent.Location;
+            evnt.Status = updatedEvent.Status;
+            return NoContent();
         }
     }
 }
