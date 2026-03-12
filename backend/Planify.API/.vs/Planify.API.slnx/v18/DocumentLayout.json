@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\ahmet.usul\\Desktop\\Web Projects\\planify\\backend\\Planify.API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{29785314-7CDD-41EB-99D6-7EC53105AB87}|Planify.API\\Planify.API.csproj|c:\\users\\ahmet.usul\\desktop\\web projects\\planify\\backend\\planify.api\\planify.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{29785314-7CDD-41EB-99D6-7EC53105AB87}|Planify.API\\Planify.API.csproj|solutionrelative:planify.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9003C71B-6AD0-8C2E-90DB-FA1FF8A79D8A}|Planify.API\\Planify.API.csproj|c:\\users\\ahmet.usul\\desktop\\web projects\\planify\\backend\\planify.api\\planify.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9003C71B-6AD0-8C2E-90DB-FA1FF8A79D8A}|Planify.API\\Planify.API.csproj|solutionrelative:planify.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{29785314-7CDD-41EB-99D6-7EC53105AB87}|Planify.API\\Planify.API.csproj|c:\\users\\ahmet.usul\\desktop\\web projects\\planify\\backend\\planify.api\\planify.api\\models\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{29785314-7CDD-41EB-99D6-7EC53105AB87}|Planify.API\\Planify.API.csproj|solutionrelative:planify.api\\models\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9003C71B-6AD0-8C2E-90DB-FA1FF8A79D8A}|Planify.API\\Planify.API.csproj|c:\\users\\ahmet.usul\\desktop\\web projects\\planify\\backend\\planify.api\\planify.api\\models\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9003C71B-6AD0-8C2E-90DB-FA1FF8A79D8A}|Planify.API\\Planify.API.csproj|solutionrelative:planify.api\\models\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{29785314-7CDD-41EB-99D6-7EC53105AB87}|Planify.API\\Planify.API.csproj|c:\\users\\ahmet.usul\\desktop\\web projects\\planify\\backend\\planify.api\\planify.api\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{29785314-7CDD-41EB-99D6-7EC53105AB87}|Planify.API\\Planify.API.csproj|solutionrelative:planify.api\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9003C71B-6AD0-8C2E-90DB-FA1FF8A79D8A}|Planify.API\\Planify.API.csproj|c:\\users\\ahmet.usul\\desktop\\web projects\\planify\\backend\\planify.api\\planify.api\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9003C71B-6AD0-8C2E-90DB-FA1FF8A79D8A}|Planify.API\\Planify.API.csproj|solutionrelative:planify.api\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{29785314-7CDD-41EB-99D6-7EC53105AB87}|Planify.API\\Planify.API.csproj|c:\\users\\ahmet.usul\\desktop\\web projects\\planify\\backend\\planify.api\\planify.api\\planify.api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
-      "RelativeMoniker": "D:0:0:{29785314-7CDD-41EB-99D6-7EC53105AB87}|Planify.API\\Planify.API.csproj|solutionrelative:planify.api\\planify.api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+      "AbsoluteMoniker": "D:0:0:{9003C71B-6AD0-8C2E-90DB-FA1FF8A79D8A}|Planify.API\\Planify.API.csproj|c:\\users\\ahmet.usul\\desktop\\web projects\\planify\\backend\\planify.api\\planify.api\\planify.api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{9003C71B-6AD0-8C2E-90DB-FA1FF8A79D8A}|Planify.API\\Planify.API.csproj|solutionrelative:planify.api\\planify.api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
     }
   ],
   "DocumentGroupContainers": [
@@ -51,8 +51,7 @@
               "RelativeToolTip": "Planify.API\\Models\\Event.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-11T12:34:00.142Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-11T12:34:00.142Z"
             },
             {
               "$type": "Document",
@@ -64,8 +63,7 @@
               "RelativeToolTip": "Planify.API\\Controllers\\WeatherForecastController.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABMAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-11T12:23:35.586Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-11T12:23:35.586Z"
             },
             {
               "$type": "Document",
@@ -77,8 +75,7 @@
               "RelativeToolTip": "Planify.API\\Planify.API.http",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
-              "WhenOpened": "2026-03-11T12:19:25.639Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-11T12:19:25.639Z"
             }
           ]
         }
