@@ -29,7 +29,7 @@ function DashboardEventListItem({ data, index }: EventCardProps) {
                 <p className={`font-handwriting text-lg md:text-xl ${style.text} leading-none`}>
                     {data.title}
                 </p>
-                <div className={`h-[2px] w-full ${style.text} opacity-20 absolute -bottom-1 left-0 rotate-[-1deg] bg-current`} />
+                <div className={`h-0.5 w-full ${style.text} opacity-20 absolute -bottom-1 left-0 -rotate-1 bg-current`} />
             </div>
 
             <div className={`

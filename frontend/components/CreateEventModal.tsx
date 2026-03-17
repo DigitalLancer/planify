@@ -19,7 +19,7 @@ export default function CreateEventModal() {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-1000 flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" />
       <div className="relative w-full max-w-2xl bg-stone-50 p-8 shadow-2xl border-2 border-slate-900/10 rounded-2xl transition-all">
 
@@ -31,18 +31,7 @@ export default function CreateEventModal() {
         </button>
         <div className="mb-8 font-serif">
           <h2 className="relative inline-block text-3xl font-handwriting text-slate-800">
-            <span className={`
-      absolute 
-      -top-2 /* Üstten 8px yukarı taşırdık */
-      -left-4 -right-4 /* Yanlardan daha fazla pay verdik */
-      h-11 /* Yüksekliği 36px'den 44px'e çıkardık */
-      bg-indigo-200/60 
-      z-0 
-      -rotate-1 
-      rounded-[6px_15px_4px_12px] 
-      skew-x-[-12deg] 
-      transform-gpu
-    `}></span>
+            <span className={`absolute -top-2 -left-4 -right-4 h-11 bg-indigo-200/60 z-0 -rotate-1 rounded-[6px_15px_4px_12px] -skew-12 transform-gpu`}></span>
 
             <span className="relative z-10 px-2 leading-none">
               Add New Event
