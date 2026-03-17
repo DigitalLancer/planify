@@ -16,6 +16,7 @@ export default function ModalCombobox({
       <label htmlFor="category" className="block font-handwriting text-xl text-slate-600">Category</label>
       <select
         id="category"
+        name="category"
         value={value}
         onChange={(e) => onChange(e.target.value as Category)}
         className="w-full bg-white border-2 border-slate-900/30 rounded-xl px-4 py-2 outline-none focus:border-indigo-400 text-slate-700 font-handwriting text-xl transition-all"

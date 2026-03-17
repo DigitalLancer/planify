@@ -6,10 +6,19 @@ import DashboardWeeklyOverview from "@/components/dashboard/DashboardWeeklyOverv
 import DashboardHero from "@/components/dashboard/DahsboardHero";
 import StatCard from "@/components/dashboard/StatCard";
 import Link from "next/link";
+import type { EventItem } from '@/types/event'
+import { getTodayEvents, getThisWeeksEvents } from "@/lib/event";
 
 const wobblyBorder = "rounded-[255px_15px_225px_15px/15px_225px_15px_255px]";
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
+  const today = new Date();
+  const data = await fetch('http://localhost:5278/api/Event')
+  const events = await data.json() as EventItem[]
+
+
+  const todayCount = getTodayEvents(events).length
+  const weekCount = getThisWeeksEvents(events).length
 
   return (
     <div className="min-h-screen bg-[#fdfbf7] md:p-4 font-serif text-slate-800 selection:bg-yellow-200">
@@ -24,7 +33,7 @@ export default function DashboardPage() {
           <section className="grid grid-cols-2 gap-6 sm:grid-cols-2 xl:grid-cols-4">
             <StatCard
               title="Today"
-              value="2"
+              value={todayCount}
               subtitle="events scheduled"
               icon={<Clock3 className="h-5 w-5" />}
               bgcolor="bg-sky-100/70"
@@ -32,7 +41,7 @@ export default function DashboardPage() {
             />
             <StatCard
               title="This Week"
-              value="6"
+              value={weekCount}
               subtitle="planned activities"
               icon={<CalendarDays className="h-5 w-5" />}
               bgcolor="bg-purple-100/70"
@@ -40,7 +49,7 @@ export default function DashboardPage() {
             />
             <StatCard
               title="Total"
-              value="12"
+              value={events.length}
               subtitle="future events"
               icon={<Sparkles className="h-5 w-5" />}
               bgcolor="bg-orange-100/70"
@@ -65,7 +74,7 @@ export default function DashboardPage() {
                   actionLabel="View all"
                 />
                 <div className="mt-5">
-                  <DashboardEventList />
+                  <DashboardEventList events={events} />
                 </div>
               </JournalCard>
             </div>

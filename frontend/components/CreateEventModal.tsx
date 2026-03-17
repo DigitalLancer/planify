@@ -1,9 +1,10 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, SubmitEvent } from "react";
 import { useModal } from "@/context/ModalContext";
 import { X } from "lucide-react";
 import { Category } from "@/types/event";
 import ModalCombobox from "./form/ModalCombobox";
+import { submitEventForm } from "@/actions";
 
 export default function CreateEventModal() {
   const wobblyBorder = "rounded-[255px_25px_225px_25px/25px_225px_25px_255px]";
@@ -53,12 +54,13 @@ export default function CreateEventModal() {
           </p>
         </div>
 
-        <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+        <form className="space-y-6" action={submitEventForm}>
           {/* Etkinlik Başlığı */}
           <div className="space-y-1 font-serif">
             <label className="block font-handwriting text-xl text-slate-600">Event Title</label>
             <input
               type="text"
+              name="title"
               placeholder="What are we doing?"
               className="w-full bg-white border-2 border-slate-900/30 rounded-xl px-4 py-2 outline-none focus:border-indigo-400 font-handwriting text-xl transition-all"
             />
@@ -73,6 +75,7 @@ export default function CreateEventModal() {
           <div className="space-y-1 font-serif">
             <label className="block font-handwriting text-xl text-slate-600">Date & Time</label>
             <input
+              name="startDate"
               type="datetime-local"
               className="w-full bg-white border-2 border-slate-900/30 rounded-xl px-4 py-2 outline-none focus:border-indigo-400 font-mono text-sm text-slate-700 transition-all"
             />
@@ -82,6 +85,7 @@ export default function CreateEventModal() {
           <div className="space-y-1 font-serif">
             <label className="block font-handwriting text-xl text-slate-600">Description</label>
             <textarea
+              name="description"
               rows={3}
               placeholder="Add some details..."
               className="w-full bg-white border-2 border-slate-900/30 rounded-xl px-4 py-2 outline-none focus:border-indigo-400 font-handwriting text-xl resize-none transition-all"
@@ -90,14 +94,7 @@ export default function CreateEventModal() {
 
           <div className="pt-2">
             <button
-              className={`
-          bg-indigo-500/90 text-white 
-          px-6 py-2 font-handwriting md:text-xl
-          shadow-md transition-all 
-          hover:scale-110 hover:-rotate-2 active:scale-95
-          cursor-pointer
-          ${wobblyBorder}
-        `}>
+              className={`bg-indigo-500/90 text-white px-6 py-2 font-handwriting md:text-xl shadow-md transition-all hover:scale-110 hover:-rotate-2 active:scale-95 cursor-pointer ${wobblyBorder}`}>
               Submit
             </button>
           </div>

@@ -2,11 +2,11 @@ const wobblyBorder = "rounded-[255px_15px_225px_15px/15px_225px_15px_255px]";
 
 type StatCardProps = {
   title: string;
-  value: string | number; // Değer hem "2" hem de 2 olabilir
-  subtitle?: string;      // Opsiyonel (her kartta olmayabilir)
-  icon: React.ReactNode;   // Lucide ikonları veya herhangi bir SVG/Component için
-  bgcolor: string;        // Tailwind class'ı (örn: "bg-blue-100")
-  rotate: string;         // Tailwind class'ı (örn: "-rotate-2")
+  value: string | number;
+  subtitle?: string;
+  icon: React.ReactNode;
+  bgcolor: string;
+  rotate: string;
 }
 export default function StatCard({ title, value, subtitle, icon, bgcolor, rotate }: StatCardProps) {
   return (

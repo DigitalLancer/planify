@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Planify.API.Dtos;
 using Planify.API.Models;
 
 namespace Planify.API.Controllers
@@ -65,7 +66,7 @@ namespace Planify.API.Controllers
                 Id = 6,
                 Title = "Doğa Yürüyüşü",
                 Description = "Belgrad Ormanı'nda sabah yürüyüşü ve kahvaltı.",
-                StartDate = new DateTime(2026, 3, 5, 9, 0, 0),
+                StartDate = new DateTime(2026, 3, 18, 9, 0, 0),
                 Location = "Belgrad Ormanı, İstanbul",
                 Status = "exercise",
                 Category = "exercise"
@@ -75,7 +76,7 @@ namespace Planify.API.Controllers
                 Id = 7,
                 Title = "UI/UX Workshop",
                 Description = "Modern dashboard tasarımı üzerine workshop.",
-                StartDate = new DateTime(2026, 3, 12, 10, 0, 0),
+                StartDate = new DateTime(2026, 4, 20, 10, 0, 0),
                 Location = "Online",
                 Status = "upcoming",
                 Category = "education"
@@ -84,7 +85,7 @@ namespace Planify.API.Controllers
             {
                 Id = 8,
                 Title = "Tech Career Day",
-                StartDate = new DateTime(2026, 3, 25, 9, 30, 0),
+                StartDate = new DateTime(2026, 4, 25, 9, 30, 0),
                 Location = "Bahçeşehir Üniversitesi",
                 Status = "upcoming",
                 Category = "work"
@@ -110,13 +111,23 @@ namespace Planify.API.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Event> AddEvent(Event newEvent)
+        public ActionResult<Event> AddEvent([FromBody] CreateEventDto newEventDto)
         {
-            if (newEvent is null)
+            if (newEventDto is null)
             {
                 return BadRequest();
             }
-            newEvent.Id = events.Max(e => e.Id) + 1;
+            Console.WriteLine($"Received new event: {newEventDto.Title}, {newEventDto.StartDate}");
+            var newEvent = new Event
+            {
+                Id = events.Any() ? events.Max(e => e.Id) + 1 : 1,
+                Title = newEventDto.Title,
+                Description = newEventDto.Description,
+                StartDate = newEventDto.StartDate,
+                Location = newEventDto.Location,
+                Category = newEventDto.Category,
+                Status = "upcoming"
+            };
             events.Add(newEvent);
             return CreatedAtAction(nameof(AddEvent), new { id = newEvent.Id }, newEvent);
         }
@@ -129,6 +140,7 @@ namespace Planify.API.Controllers
             {
                 return NotFound();
             }
+
             evnt.Title = updatedEvent.Title;
             evnt.Description = updatedEvent.Description;
             evnt.StartDate = updatedEvent.StartDate;

@@ -1,8 +1,7 @@
-﻿namespace Planify.API.Models
+﻿namespace Planify.API.Dtos
 {
-    public class Event
+    public class CreateEventDto
     {
-        public int Id { get; set; }
         public string Title { get; set; }
         public DateTime StartDate { get; set; }
         public string? Location { get; set; }
