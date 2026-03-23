@@ -1,7 +1,7 @@
-import type { EventItem } from '@/types/event'
+import type { Event } from '@/types/event'
 import DashboardEventListItem from './DashboardEventListItem'
 
-export default async function DashboardEventList({ events }: { events: EventItem[] }) {
+export default  function DashboardEventList({ events }: { events: Event[] }) {
     const today = new Date();
     const sortedEvents = events.sort((a, b) => {
         return new Date(a.startDate).getTime() - new Date(b.startDate).getTime()

@@ -1,9 +1,9 @@
 "use client"
 import { useMemo, useState, useEffect } from "react";
-import type { EventItem, Status } from '@/types/event'
+import type { Event, Status } from '@/types/event'
 
 type EventTableProp = {
-    data: EventItem[];
+    data: Event[];
 }
 
 function statusMeta(status: Status) {
@@ -25,6 +25,13 @@ function statusMeta(status: Status) {
                 label: "Cancelled",
                 badge: "bg-rose-50 text-rose-700 ring-1 ring-rose-200",
                 dot: "bg-rose-500",
+            };
+
+        default:
+            return {
+                label: status || "Unknown",
+                badge: "bg-gray-50 text-gray-700 ring-1 ring-gray-200",
+                dot: "bg-gray-500",
             };
     }
 }
@@ -79,7 +86,6 @@ export default function EventsTable(data: EventTableProp) {
 
     return (
         <>
-            {/* Controls */}
             <div className="mt-6 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-200">
                 <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                     <div className="flex flex-1 items-center gap-3">
@@ -127,7 +133,6 @@ export default function EventsTable(data: EventTableProp) {
                 </div>
             </div>
 
-            {/* Table */}
             <div className="mt-4 overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-200">
                 <div className="overflow-x-auto">
                     <table className="min-w-230 w-full">
@@ -147,7 +152,7 @@ export default function EventsTable(data: EventTableProp) {
                                 const s = statusMeta(e.status);
                                 return (
                                     <tr key={e.id} className="odd:bg-white even:bg-gray-50 hover:bg-gray-100 transition-colors"
->
+                                    >
                                         {/* Event cell */}
                                         <td className="px-5 py-4">
                                             <div className="flex items-center gap-3">
@@ -224,7 +229,6 @@ export default function EventsTable(data: EventTableProp) {
                     </table>
                 </div>
 
-                {/* Footer */}
                 <div className="flex flex-col gap-3 border-t border-slate-100 bg-white px-5 py-4 md:flex-row md:items-center md:justify-between">
                     <div className="text-sm text-slate-600">
                         Tip: Row hover’da actions görünür (desktop). Mobile’da her zaman görünür.

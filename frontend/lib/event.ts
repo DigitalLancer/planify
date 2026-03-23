@@ -1,6 +1,6 @@
-import { EventItem } from "@/types/event";
+import { Event } from "@/types/event";
 
-export function getThisWeeksEvents(events: EventItem[]) {
+export function getThisWeeksEvents(events: Event[]) {
     const now = new Date();
 
     const start = new Date(now);
@@ -20,7 +20,7 @@ export function getThisWeeksEvents(events: EventItem[]) {
     });
 }
 
-export function getTodayEvents(events: EventItem[]) {
+export function getTodayEvents(events: Event[]) {
     const now = new Date();
 
     return events.filter(event => {

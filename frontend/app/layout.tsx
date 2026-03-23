@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
-import Providers from './providers'
+import SyncfusionLicenceProvider from './providers/SyncfusionLicenceProvider'
 import { ModalProvider } from "@/context/ModalContext";
 import CreateEventModal from "@/components/CreateEventModal";
+import QueryProvider from "./providers/QueryProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,17 +32,19 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Providers>
-          <ModalProvider>
-            <div className="flex h-screen overflow-hidden">
-              <Navbar></Navbar>
-              <main className="flex-1 min-h-screen overflow-y-auto p-4 md:p-10">
-                {children}
-              </main>
-              <CreateEventModal/>
-            </div>
-          </ModalProvider>
-        </Providers>
+        <SyncfusionLicenceProvider>
+          <QueryProvider>
+            <ModalProvider>
+              <div className="flex h-screen overflow-hidden">
+                <Navbar></Navbar>
+                <main className="flex-1 min-h-screen overflow-y-auto p-4 md:p-10">
+                  {children}
+                </main>
+                <CreateEventModal />
+              </div>
+            </ModalProvider>
+          </QueryProvider>
+        </SyncfusionLicenceProvider>
       </body>
     </html>
   );

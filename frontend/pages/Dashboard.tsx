@@ -1,3 +1,4 @@
+"use client"
 
 import { CalendarDays, CheckCircle2, Clock3, Sparkles } from "lucide-react";
 import DashboardCalendar from "@/components/dashboard/DashboardCalendar";
@@ -6,19 +7,19 @@ import DashboardWeeklyOverview from "@/components/dashboard/DashboardWeeklyOverv
 import DashboardHero from "@/components/dashboard/DahsboardHero";
 import StatCard from "@/components/dashboard/StatCard";
 import Link from "next/link";
-import type { EventItem } from '@/types/event'
 import { getTodayEvents, getThisWeeksEvents } from "@/lib/event";
+import { useEvents } from "@/hooks/useEvents";
 
 const wobblyBorder = "rounded-[255px_15px_225px_15px/15px_225px_15px_255px]";
 
-export default async function DashboardPage() {
-  const today = new Date();
-  const data = await fetch('http://localhost:5278/api/Event')
-  const events = await data.json() as EventItem[]
+export default function DashboardPage() {
+  const { data = [], isLoading, error } = useEvents()
 
+  if (isLoading) return <div>Yükleniyor...</div>
+  if (error) return <div>Hata oluştu!</div>
 
-  const todayCount = getTodayEvents(events).length
-  const weekCount = getThisWeeksEvents(events).length
+  const todayCount = getTodayEvents(data).length
+  const weekCount = getThisWeeksEvents(data).length
 
   return (
     <div className="min-h-screen bg-[#fdfbf7] md:p-4 font-serif text-slate-800 selection:bg-yellow-200">
@@ -49,7 +50,7 @@ export default async function DashboardPage() {
             />
             <StatCard
               title="Total"
-              value={events.length}
+              value={data.length}
               subtitle="future events"
               icon={<Sparkles className="h-5 w-5" />}
               bgcolor="bg-orange-100/70"
@@ -74,7 +75,7 @@ export default async function DashboardPage() {
                   actionLabel="View all"
                 />
                 <div className="mt-5">
-                  <DashboardEventList events={events} />
+                  <DashboardEventList events={data} />
                 </div>
               </JournalCard>
             </div>
@@ -110,8 +111,6 @@ export default async function DashboardPage() {
   );
 }
 
-
-
 function JournalCard({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
     <div className={`
@@ -122,7 +121,6 @@ function JournalCard({ children, className = "" }: { children: React.ReactNode; 
     </div>
   );
 }
-
 
 function SectionHeader({ title, description, actionLabel }: any) {
   return (

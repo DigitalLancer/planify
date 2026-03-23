@@ -68,7 +68,7 @@ namespace Planify.API.Controllers
                 Description = "Belgrad Ormanı'nda sabah yürüyüşü ve kahvaltı.",
                 StartDate = new DateTime(2026, 3, 18, 9, 0, 0),
                 Location = "Belgrad Ormanı, İstanbul",
-                Status = "exercise",
+                Status = "completed",
                 Category = "exercise"
             },
             new Event
