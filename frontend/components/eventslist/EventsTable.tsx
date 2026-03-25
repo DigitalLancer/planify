@@ -225,11 +225,7 @@ export default function EventsTable(data: EventTableProp) {
                 </div>
 
                 <div className="flex flex-col gap-3 border-t border-slate-100 bg-white px-5 py-4 md:flex-row md:items-center md:justify-between">
-                    <div className="text-sm text-slate-600">
-                        Tip: Row hover’da actions görünür (desktop). Mobile’da her zaman görünür.
-                    </div>
-
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 ">
                         <button className="rounded-2xl bg-white px-3 py-2 text-sm font-semibold text-slate-700 ring-1 ring-slate-200 hover:bg-slate-50">
                             Prev
                         </button>

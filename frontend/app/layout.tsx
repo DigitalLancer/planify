@@ -6,7 +6,7 @@ import SyncfusionLicenceProvider from './providers/SyncfusionLicenceProvider'
 import { ModalProvider } from "@/context/ModalContext";
 import CreateEventModal from "@/components/modals/CreateEventModal";
 import QueryProvider from "./providers/QueryProvider";
-import UpdateEventModal from "@/components/modals/UpdateEventModal";
+import UpdateEventModal from "@/components/modals/UpdateEventModal"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
