@@ -213,7 +213,7 @@ export default function EventsTable(data: EventTableProp) {
                                             <div className="mt-1 text-sm text-slate-600">
                                                 Arama/filtreleri gevşet veya yeni etkinlik ekle.
                                             </div>
-                                            <button className="mt-4 rounded-2xl bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700">
+                                            <button onClick={() => openModal("createEvent")} className="mt-4 rounded-2xl bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700 cursor-pointer">
                                                 + Add Event
                                             </button>
                                         </div>

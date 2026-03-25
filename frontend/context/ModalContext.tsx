@@ -9,7 +9,7 @@ type ModalState =
 
 type ModalContextType = {
   modal: ModalState;
-  openModal: (type: "createEvent" | "updateEvent", eventId: number) => void;
+  openModal: (type: "createEvent" | "updateEvent", eventId?: number) => void;
   closeModal: () => void
 }
 

@@ -1,5 +1,7 @@
+"use client"
+
 import { ForecastResponse, DailyForecastResponse, DailyForecastDisplay } from '@/types/weather';
-import React from 'react'
+import { useState, useEffect } from 'react'
 import WeatherGroup from './WeatherGroup';
 import { getWmoInfo, getLocalWeatherIconPath } from "@/lib/wmoIcons";
 
@@ -21,9 +23,31 @@ export function mergeApiData(daily: DailyForecastResponse): DailyForecastDisplay
     }));
 }
 
-async function DashboardWeatherForecast() {
-    const data = await getWeatherData();
-    const forecast = mergeApiData(data.daily);
+
+function DashboardWeatherForecast() {
+    const [forecast, setForecast] = useState<DailyForecastDisplay[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        async function fetchWeather() {
+            try {
+                const data = await getWeatherData();
+                const merged = mergeApiData(data.daily);
+                setForecast(merged);
+            } catch (err) {
+                setError("Weather data could not be loaded.");
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        fetchWeather();
+    }, []);
+
+    if (loading) return <div>Loading...</div>;
+    if (error) return <div>{error}</div>;
+    
     return (
         <div className='w-full flex justify-around'>
             {forecast.map((forecastDay, index) => (

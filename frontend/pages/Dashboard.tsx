@@ -9,6 +9,8 @@ import StatCard from "@/components/dashboard/StatCard";
 import Link from "next/link";
 import { getTodayEvents, getThisWeeksEvents } from "@/lib/event";
 import { useEvents } from "@/hooks/useEvents";
+import DashboardWeatherForecast from "@/components/dashboard/DashboardWeatherForecast";
+
 
 const wobblyBorder = "rounded-[255px_15px_225px_15px/15px_225px_15px_255px]";
 
@@ -66,6 +68,7 @@ export default function DashboardPage() {
             />
           </section>
 
+          {/* Main Content */}
           <section className="grid grid-cols-1 gap-8 xl:grid-cols-12">
             <div className="xl:col-span-7">
               <JournalCard>
@@ -78,6 +81,15 @@ export default function DashboardPage() {
                   <DashboardEventList events={data} />
                 </div>
               </JournalCard>
+
+              <JournalCard className="mt-8">
+                <SectionHeader
+                  title="Weather Forecast"
+                  description="Don't get weather suprises!"
+                />
+                <DashboardWeatherForecast></DashboardWeatherForecast>
+              </JournalCard>
+
             </div>
 
             <div className="xl:col-span-5 flex flex-col gap-8">

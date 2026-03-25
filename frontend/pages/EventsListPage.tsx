@@ -32,8 +32,8 @@ export default function EventsListPage() {
 
       <div className="mt-8 grid grid-cols-2 gap-6 md:grid-cols-4">
         <StatCard title="Total" value={data.length} color="bg-blue-100/70" rotate="-rotate-1" />
-        <StatCard title="Upcoming" value={upcoming} color="bg-emerald-100/70" rotate="rotate-2" />
-        <StatCard title="Completed" value={completed} color="bg-purple-100/70" rotate="-rotate-2" />
+        <StatCard title="Upcoming" value={activeEvents.length} color="bg-emerald-100/70" rotate="rotate-2" />
+        <StatCard title="Completed" value={pastEvents.length} color="bg-purple-100/70" rotate="-rotate-2" />
         <StatCard title="Cancelled" value={cancelled} color="bg-rose-100/70" rotate="rotate-1" />
       </div>
 
