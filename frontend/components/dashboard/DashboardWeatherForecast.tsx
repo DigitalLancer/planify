@@ -3,10 +3,19 @@
 import { ForecastResponse, DailyForecastResponse, DailyForecastDisplay } from '@/types/weather';
 import { useState, useEffect } from 'react'
 import WeatherGroup from './WeatherGroup';
-import { getWmoInfo, getLocalWeatherIconPath } from "@/lib/wmoIcons";
 
-async function getWeatherData(): Promise<ForecastResponse> {
-    const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=41.0138&longitude=28.9497&daily=weather_code,rain_sum,temperature_2m_max,temperature_2m_min&timezone=auto`)
+type Coords = {
+    lat: number;
+    lon: number;
+};
+
+const DEFAULT_COORDS: Coords = {
+    lat: 41.0138,
+    lon: 28.9497,
+};
+
+async function getWeatherData(lat: number, lon: number): Promise<ForecastResponse> {
+    const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=weather_code,rain_sum,temperature_2m_max,temperature_2m_min&timezone=auto`)
     if (!res.ok) throw new Error("Failed");
     return res.json();
 }
@@ -30,9 +39,9 @@ function DashboardWeatherForecast() {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        async function fetchWeather() {
+        async function fetchWeather(coords: Coords) {
             try {
-                const data = await getWeatherData();
+                const data = await getWeatherData(coords.lat, coords.lon);
                 const merged = mergeApiData(data.daily);
                 setForecast(merged);
             } catch (err) {
@@ -41,13 +50,26 @@ function DashboardWeatherForecast() {
                 setLoading(false);
             }
         }
-
-        fetchWeather();
+        if (!navigator.geolocation) {
+            fetchWeather(DEFAULT_COORDS);
+            return;
+        }
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                fetchWeather({
+                    lat: position.coords.latitude,
+                    lon: position.coords.longitude,
+                });
+            },
+            () => {
+                fetchWeather(DEFAULT_COORDS);
+            }
+        );
     }, []);
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>{error}</div>;
-    
+
     return (
         <div className='w-full flex justify-around'>
             {forecast.map((forecastDay, index) => (

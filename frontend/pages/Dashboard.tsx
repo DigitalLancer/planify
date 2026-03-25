@@ -1,6 +1,6 @@
 "use client"
 
-import { CalendarDays, CheckCircle2, Clock3, Sparkles } from "lucide-react";
+import { CalendarDays, CheckCircle2, Clock3, Sparkles, MapPin } from "lucide-react";
 import DashboardCalendar from "@/components/dashboard/DashboardCalendar";
 import DashboardEventList from "@/components/dashboard/DashboardEventList";
 import DashboardWeeklyOverview from "@/components/dashboard/DashboardWeeklyOverview";
@@ -87,6 +87,7 @@ export default function DashboardPage() {
                   title="Weather Forecast"
                   description="Don't get weather suprises!"
                 />
+                <h2 className="opacity-80 text-sm flex gap-1 my-3"><span><MapPin size={16}/></span> Istanbul, Turkey</h2>
                 <DashboardWeatherForecast></DashboardWeatherForecast>
               </JournalCard>
 
