@@ -9,7 +9,7 @@ export default  function DashboardEventList({ events }: { events: Event[] }) {
     const startIndex = sortedEvents.findIndex(
         e => new Date(e.startDate) > today
     )
-    const firsFiveEvent = events.slice(startIndex,startIndex+6);
+    const firsFiveEvent = events.slice(startIndex,startIndex+5);
 
     return (
         <div className='mt-3 flex flex-col gap-5 relative pl-4'>
