@@ -9,7 +9,6 @@ export async function getEvents(): Promise<Event[]> {
 }
 
 export async function getEventById(id:number): Promise<Event> {
-  console.log("Fetch called for:",id);
   if (!id) {
     throw new Error("Invalid Event ID");
   }
