@@ -7,17 +7,25 @@ import { Category } from "@/types/event";
 import ModalCombobox from "../form/ModalCombobox";
 import { useUpdateEvent, useEventById } from "@/hooks/useEvents";
 
+function toInputDateTime(utcString: string) {
+  const date = new Date(utcString)
+
+  const pad = (n: number) => n.toString().padStart(2, "0")
+
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`
+}
+
 export default function UpdateEventModal() {
     const wobblyBorder = "rounded-[255px_25px_225px_25px/25px_225px_25px_255px]";
 
     const { modal, closeModal } = useModal();
-    
+
     const eventId = modal.type === "updateEvent" ? modal.eventId : null;
 
     const { data, isLoading, error } = useEventById(eventId);
-    
+
     const { mutate, isPending } = useUpdateEvent()
-    
+
     const [title, setTitle] = useState("")
     const [category, setCategory] = useState<Category | "">("");
     const [startDate, setStartDate] = useState("")
@@ -26,7 +34,7 @@ export default function UpdateEventModal() {
 
     useEffect(() => {
         if (data) {
-            console.log("data:",data);
+            console.log("data:", data);
             setTitle(data.title ?? "");
             setCategory(data.category ?? "");
             setStartDate(data.startDate ?? "");
@@ -113,9 +121,12 @@ export default function UpdateEventModal() {
                         <input
                             name="startDate"
                             type="datetime-local"
-                            value={startDate}
+                            value={startDate ? toInputDateTime(startDate) : ""}
                             className="w-full bg-white border-2 border-slate-900/30 rounded-xl px-4 py-2 outline-none focus:border-indigo-400 font-mono text-sm text-slate-700 transition-all"
-                            onChange={(e) => setStartDate(e.target.value)}
+                            onChange={(e) => {
+                                const utc = new Date(e.target.value).toISOString()
+                                setStartDate(utc)
+                            }}
                             required
                         />
                     </div>

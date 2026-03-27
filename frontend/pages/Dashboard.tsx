@@ -3,7 +3,6 @@
 import { CalendarDays, CheckCircle2, Clock3, Sparkles, MapPin } from "lucide-react";
 import DashboardCalendar from "@/components/dashboard/DashboardCalendar";
 import DashboardEventList from "@/components/dashboard/DashboardEventList";
-import DashboardWeeklyOverview from "@/components/dashboard/DashboardWeeklyOverview";
 import DashboardHero from "@/components/dashboard/DahsboardHero";
 import StatCard from "@/components/dashboard/StatCard";
 import Link from "next/link";

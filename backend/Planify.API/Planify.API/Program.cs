@@ -1,8 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using Planify.API.Data;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+DotNetEnv.Env.Load();
+
+builder.Configuration.AddEnvironmentVariables();
+
+var connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
 
 builder.Services.AddCors(options =>
 {
@@ -19,6 +26,12 @@ builder.Services.AddCors(options =>
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+builder.Services.AddDbContext<EventDbContext>(options =>
+    options
+        .UseNpgsql(connectionString)
+        .UseSnakeCaseNamingConvention()
+);
 
 var app = builder.Build();
 

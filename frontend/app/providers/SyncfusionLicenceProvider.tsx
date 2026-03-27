@@ -5,9 +5,6 @@ import { registerLicense } from '@syncfusion/ej2-base'
 // 🔑 BURAYA kendi license key'in
 const key = process.env.NEXT_PUBLIC_SYNCFUSION_LICENSE
 
-console.log('SYNCFUSION KEY EXISTS?', !!key)
-console.log('SYNCFUSION KEY LENGTH:', key?.length)
-
 if (key) {
   registerLicense(key)
 } else {
