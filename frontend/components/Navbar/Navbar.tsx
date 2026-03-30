@@ -4,7 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LogOut } from "lucide-react";
 import { useLogout } from "@/hooks/useAuth";
-
+import Image from "next/image";
+import DefaultProfilePic from "@/public/default-profile.png"
 export default function VerticalNavbar() {
   const pathname = usePathname();
   const mutation = useLogout();
@@ -12,15 +13,14 @@ export default function VerticalNavbar() {
   const menu = [
     { label: "Dashboard", href: "/dashboard", activeColor: "bg-blue-500" },
     { label: "Events List", href: "/eventlist", activeColor: "bg-rose-500" },
-    { label: "Calendar View", href: "/licenses", activeColor: "bg-amber-500" },
     { label: "Settings", href: "/settings", activeColor: "bg-emerald-500" },
   ];
 
   return (
     <aside id="sidebar" className="bg-[#264b88] hidden md:flex flex-col h-full w-40 pt-10 relative overflow-visible shadow-[4px_0_15px_rgba(0,0,0,0.1)]">
       <div className="w-full flex justify-center mb-12">
-        <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-[#1e293b] font-handwriting text-2xl rotate-[-8deg] shadow-[0_4px_0_0_#94a3b8] border-2 border-white">
-          N
+        <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-[#1e293b] font-handwriting text-2xl border-2 border-white">
+          <Image src={DefaultProfilePic} alt="Profile picture" width={160} height={160}></Image>
         </div>
       </div>
 
