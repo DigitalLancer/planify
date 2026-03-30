@@ -68,8 +68,9 @@ namespace Planify.API.Controllers
 
         [Authorize]
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateEvent(int id, Event updatedEvent)
+        public async Task<ActionResult> UpdateEvent(int id, CreateEventDto updatedEvent)
         {
+            Console.WriteLine($"Received update for event ID {id}: {updatedEvent.Title}, {updatedEvent.Description}, {updatedEvent.StartDate}, {updatedEvent.Location}, {updatedEvent.Category}");
             var evnt = await _context.Events.FindAsync(id);
 
             if (evnt is null)
