@@ -35,6 +35,17 @@ namespace Planify.API.Controllers
             return Ok(evnt);
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Event>> GetEventByUserId(string id)
+        {
+            var events = await _context.Events.Where(e => e.UserId == id).ToListAsync();
+            if (events is null || !events.Any())
+            {
+                return NotFound();
+            }
+            return Ok(events);
+        }
+
         [HttpPost]
         public async Task<ActionResult<Event>> AddEvent([FromBody] CreateEventDto newEventDto)
         {
@@ -42,7 +53,6 @@ namespace Planify.API.Controllers
             {
                 return BadRequest();
             }
-            Console.WriteLine($"Received new event: {newEventDto.Title}, {newEventDto.StartDate}");
             var newEvent = new Event
             {
                 Title = newEventDto.Title,
@@ -61,7 +71,6 @@ namespace Planify.API.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateEvent(int id, Event updatedEvent)
         {
-            Console.WriteLine($"Updating event with ID: {id}");
             var evnt = await _context.Events.FindAsync(id);
 
             if (evnt is null)

@@ -9,12 +9,14 @@ import Link from "next/link";
 import { getTodayEvents, getThisWeeksEvents } from "@/lib/event";
 import { useEvents } from "@/hooks/useEvents";
 import DashboardWeatherForecast from "@/components/dashboard/DashboardWeatherForecast";
+import { useMe, useUserById } from "@/hooks/useUser";
 
 
 const wobblyBorder = "rounded-[255px_15px_225px_15px/15px_225px_15px_255px]";
 
 export default function DashboardPage() {
   const { data = [], isLoading, error } = useEvents()
+
 
   if (isLoading) return <div>Yükleniyor...</div>
   if (error) return <div>Hata oluştu!</div>

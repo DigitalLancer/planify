@@ -9,7 +9,6 @@ export const useEvents = () => {
   })
 }
 
-// id tipini 'number | null' olarak güncelliyoruz
 export const useEventById = (id: number | null | undefined) => {
   return useQuery({
     queryKey: ['events', id],
