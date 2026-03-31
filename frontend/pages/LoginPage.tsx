@@ -44,7 +44,7 @@ function LoginPage() {
                 <div className="text-center mb-10">
                     <h1 className="relative inline-block text-4xl font-handwriting text-slate-800">
                         <span className="absolute -top-1 -left-3 -right-3 h-10 bg-yellow-200/60 z-0 -rotate-1 skew-x-[-12deg]"></span>
-                        <span className="relative z-10">Open Your Journal</span>
+                        <span className="relative z-10">Create Your Planify Account</span>
                     </h1>
                 </div>
 
