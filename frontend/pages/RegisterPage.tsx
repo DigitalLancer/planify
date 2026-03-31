@@ -85,6 +85,7 @@ export default function RegisterPage() {
                             </div>
                             <input
                                 type="password"
+                                required
                                 onChange={(e) => setPassword(e.target.value)}
                                 placeholder="••••••••"
                                 className="w-full bg-slate-50 border-b-2 border-slate-200 py-3 pl-10 pr-4 outline-none focus:border-rose-400 font-mono text-sm transition-all rounded-t-lg"
@@ -105,7 +106,7 @@ export default function RegisterPage() {
                 <div className="mt-8 pt-6 border-t border-dashed border-slate-200 text-center">
                     <p className="font-handwriting text-lg text-slate-500">
                         Already have an account?
-                        <Link href="/login" className="ml-2 text-indigo-600 hover:underline decoration-wavy font-bold">
+                        <Link href="/login" className="ml-2 text-indigo-600 hover:underline decoration-wavy">
                             Sign in
                         </Link>
                     </p>

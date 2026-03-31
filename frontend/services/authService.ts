@@ -3,7 +3,7 @@ import { LoginDto, RegisterDto } from "@/types/auth";
 
 export async function register(data: RegisterDto) {
   console.log("Sending register data:",data);
-  const response = await fetch("http://localhost:5278/api/Auth/register", {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/Auth/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export async function register(data: RegisterDto) {
 
 
 export async function loginUser(data: LoginDto) {
-  const response = await fetch("http://localhost:5278/api/Auth/login", {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/Auth/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -40,7 +40,7 @@ export async function loginUser(data: LoginDto) {
 }
 
 export async function logout() {
-  const res = await fetch("http://localhost:5278/api/auth/logout", {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/logout`, {
     method: "POST",
     credentials: "include",
   });

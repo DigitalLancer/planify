@@ -4,7 +4,7 @@ export async function getUserById(id: string): Promise<User> {
   if (!id) {
     throw new Error("Invalid User ID");
   }
-  const response = await fetch(`http://localhost:5278/api/Users/${id}`,{
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/Users/${id}`,{
     credentials:"include"
   })
   if (!response.ok) {
@@ -15,7 +15,7 @@ export async function getUserById(id: string): Promise<User> {
 
 export async function getMe() {
   console.log("getMe called");
-  const response = await fetch("http://localhost:5278/api/Users/me", {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/Users/me`, {
     method: "GET",
     credentials: "include",
   });
