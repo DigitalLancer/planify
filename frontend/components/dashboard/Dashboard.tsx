@@ -7,10 +7,10 @@ import DashboardHero from "@/components/dashboard/DahsboardHero";
 import StatCard from "@/components/dashboard/StatCard";
 import Link from "next/link";
 import { getTodayEvents, getThisWeeksEvents } from "@/lib/event";
-import {useEventsByUserId } from "@/hooks/useEvents";
+import { useEventsByUserId } from "@/hooks/useEvents";
 import DashboardWeatherForecast from "@/components/dashboard/DashboardWeatherForecast";
 import { useMe } from "@/hooks/useUser";
-
+import { useEffect } from "react";
 
 const wobblyBorder = "rounded-[255px_15px_225px_15px/15px_225px_15px_255px]";
 
@@ -29,7 +29,11 @@ export default function DashboardPage() {
   const completedEvents = events.filter(
     (event) => new Date(event.startDate) < today
   );
-
+  useEffect(() => {
+    window.onerror = function (msg, source, lineno, colno, error) {
+      document.body.innerHTML += `<div style="color:red">${msg}</div>`;
+    };
+  }, []);
   return (
     <div className="min-h-screen bg-[#fdfbf7] md:p-4 font-serif text-slate-800 selection:bg-yellow-200">
       <div className="mx-auto relative">
