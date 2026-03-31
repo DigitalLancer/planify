@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { getEvents, getEventById,getEventsByUserId, createEvent, deleteEvent, updateEvent } from '@/services/eventService'
-import {CreateEventDto } from "@/types/event";
+import { getEvents, getEventById, getEventsByUserId, createEvent, deleteEvent, updateEvent } from '@/services/eventService'
+import { CreateEventDto } from "@/types/event";
 
 export const useEvents = () => {
   return useQuery({
@@ -18,7 +18,7 @@ export const useEventById = (id: number | null | undefined) => {
       }
       return getEventById(id);
     },
-    enabled: typeof id === 'number', 
+    enabled: typeof id === 'number',
   });
 };
 
@@ -45,9 +45,12 @@ export const useUpdateEvent = () => {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: ({id,data}: {id: number; data: CreateEventDto;}) => updateEvent(id, data),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['events'] })
+    mutationFn: ({ id, data }: { id: number; data: CreateEventDto; }) => updateEvent(id, data),
+    onSuccess: async (_, variables) => {
+      await Promise.all([
+        queryClient.invalidateQueries({ queryKey: ['events'] }),
+        queryClient.invalidateQueries({ queryKey: ['event', variables.id] }),
+      ])
     }
   })
 }
