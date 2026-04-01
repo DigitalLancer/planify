@@ -19,7 +19,7 @@ builder.Services.AddCors(options =>
         policy =>
         {
             policy
-                .WithOrigins("http://localhost:3000","https://planifyapp.vercel.app")
+                .WithOrigins("http://localhost:3000","https://www.uselumeno.com")
                 .AllowAnyHeader()
                 .AllowAnyMethod()
                 .AllowCredentials();
