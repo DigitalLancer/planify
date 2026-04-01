@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Lumemo",
+  title: "Lumeno",
   description: "Lumeno event manager",
   icons: {
     icon: "/favicon.png",
