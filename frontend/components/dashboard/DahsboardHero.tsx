@@ -3,13 +3,11 @@ import { useModal } from "@/context/ModalContext";
 import { useMe } from "@/hooks/useUser";
 const wobblyBorder = "rounded-[255px_25px_225px_25px/25px_225px_25px_255px]";
 
-function DashboardHero() {
+function DashboardHero({ user }: { user?: { username?: string } }) {
   const { openModal } = useModal()
-  const { data, isLoading } = useMe();
-  console.log("data:",data);
+
   return (
     <div className={`relative w-full h-55 overflow-hidden bg-white border-2 border-slate-900/10 ${wobblyBorder} shadow-sm group`}>
-
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute -top-10 -right-20 w-100 h-100 bg-purple-200/40 rounded-full blur-3xl group-hover:bg-purple-300/40 transition-colors duration-700" />
         <div className="absolute -bottom-20 -left-10 w-[350px] h-[350px] bg-blue-200/30 rounded-full blur-3xl mix-blend-multiply" />
@@ -30,7 +28,7 @@ function DashboardHero() {
           <p className="text-xs font-mono uppercase tracking-widest text-slate-400">Personal Planner • Vol. 01</p>
           <h1 className="text-2xl md:text-5xl font-handwriting text-slate-800 leading-tight">
             Welcome back, <span className="relative">
-              {isLoading ? "..." : data?.username ?? ""}
+              {user?.username ?? "..."}
               <svg className="absolute -bottom-2 left-0 w-full h-3 text-yellow-300/60" viewBox="0 0 100 10" preserveAspectRatio="none">
                 <path d="M0 5 Q 25 2, 50 5 T 100 5" stroke="currentColor" strokeWidth="8" fill="none" strokeLinecap="round" />
               </svg>

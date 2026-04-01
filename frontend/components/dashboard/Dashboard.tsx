@@ -18,7 +18,9 @@ export default function DashboardPage() {
   const today = new Date();
   
   const { data: user, isLoading: userLoading, error: userError } = useMe()
-  const { data: events = [], isLoading: eventsLoading, error: eventsError } = useEventsByUserId(user?.id, { enabled: !!user?.id });
+  const { data: eventsData, isLoading: eventsLoading, error: eventsError } = useEventsByUserId(user?.id, { enabled: !!user?.id });
+
+  console.log("user data:",user);
 
   useEffect(() => {
     window.onerror = function (msg, source, lineno, colno, error) {
@@ -28,6 +30,8 @@ export default function DashboardPage() {
 
   if (eventsLoading || userLoading) return <div>Yükleniyor...</div>
   if (eventsError || userError) return <div>Hata oluştu!</div>
+
+  const events = eventsData ?? [];
 
   const todayCount = getTodayEvents(events).length
   const weekCount = getThisWeeksEvents(events).length
@@ -41,7 +45,7 @@ export default function DashboardPage() {
       <div className="mx-auto relative">
         <div className="flex flex-col gap-8">
           <div className="relative group">
-            <DashboardHero />
+            <DashboardHero user={user}/>
             <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-24 h-8 bg-blue-400/30 -rotate-2 backdrop-blur-sm border-x border-blue-500/20 shadow-sm" />
           </div>
 
