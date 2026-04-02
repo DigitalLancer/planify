@@ -34,7 +34,6 @@ export default function UpdateEventModal() {
 
     useEffect(() => {
         if (data) {
-            console.log("data:", data);
             setTitle(data.title ?? "");
             setCategory(data.category ?? "");
             setStartDate(data.startDate ?? "");

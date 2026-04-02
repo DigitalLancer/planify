@@ -51,7 +51,7 @@ namespace Planify.API.Controllers
         [HttpGet("{id}/events")]
         public async Task<ActionResult<Event>> GetEventByUserId(string id)
         {
-            var events = await _context.Events.Where(e => e.UserId == id).ToListAsync();
+            var events = await _context.Events.Where(e => e.UserId == id && !e.IsDeleted).ToListAsync();
             return Ok(events);
         }
 

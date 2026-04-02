@@ -14,7 +14,6 @@ export async function getUserById(id: string): Promise<User> {
 }
 
 export async function getMe() {
-  console.log("getMe called");
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/Users/me`, {
     method: "GET",
     credentials: "include",

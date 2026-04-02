@@ -31,7 +31,11 @@ namespace Planify.API.Models
 
         public DateTime? LastModifiedAt { get; set; }
 
+        [Required]
+        public bool IsDeleted { get; set; } = false;
+        
         public string UserId { get; set; }
+        
         public User User { get; set; }
     }
 }

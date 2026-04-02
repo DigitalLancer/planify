@@ -70,7 +70,6 @@ namespace Planify.API.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateEvent(int id, CreateEventDto updatedEvent)
         {
-            Console.WriteLine($"Received update for event ID {id}: {updatedEvent.Title}, {updatedEvent.Description}, {updatedEvent.StartDate}, {updatedEvent.Location}, {updatedEvent.Category}");
             var evnt = await _context.Events.FindAsync(id);
 
             if (evnt is null)
@@ -98,7 +97,7 @@ namespace Planify.API.Controllers
             {
                 return NotFound();
             }
-            _context.Events.Remove(evnt);
+            evnt.IsDeleted = true;
             await _context.SaveChangesAsync();
 
             return NoContent();
