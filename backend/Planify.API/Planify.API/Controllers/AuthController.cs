@@ -28,7 +28,7 @@ namespace Planify.API.Controllers
         {
             var existingUser = await _userManager.FindByEmailAsync(registerDto.Email);
             if (existingUser != null)
-                return BadRequest(new { message = "User already exists." });
+                return BadRequest(new { message = "This email already exists" });
 
             var user = new User
             {

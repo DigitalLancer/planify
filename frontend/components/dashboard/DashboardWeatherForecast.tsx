@@ -39,6 +39,11 @@ function DashboardWeatherForecast() {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
+        if (!navigator.geolocation) {
+            fetchWeather(DEFAULT_COORDS);
+            return;
+        }
+        
         async function fetchWeather(coords: Coords) {
             try {
                 const data = await getWeatherData(coords.lat, coords.lon);
@@ -49,10 +54,6 @@ function DashboardWeatherForecast() {
             } finally {
                 setLoading(false);
             }
-        }
-        if (!navigator.geolocation) {
-            fetchWeather(DEFAULT_COORDS);
-            return;
         }
         navigator.geolocation.getCurrentPosition(
             (position) => {

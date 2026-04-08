@@ -2,7 +2,7 @@ import { LoginDto, RegisterDto } from "@/types/auth";
 
 
 export async function register(data: RegisterDto) {
-  console.log("Sending register data:",data);
+  console.log("Sending register data:", data);
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/Auth/register`, {
     method: "POST",
     headers: {
@@ -11,8 +11,10 @@ export async function register(data: RegisterDto) {
     body: JSON.stringify(data),
   });
 
+  const result = await response.json();
+
   if (!response.ok) {
-    throw new Error("Register failed.");
+    throw new Error(result?.message || "Register failed.");
   }
   return response;
 }

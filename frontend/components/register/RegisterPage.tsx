@@ -44,6 +44,14 @@ export default function RegisterPage() {
                     </p>
                 </div>
 
+                {isError && (
+                    <div className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2 mb-5">
+                        {error instanceof Error
+                            ? error.message
+                            : "Login failed"}
+                    </div>
+                )}
+
                 <form className="space-y-6" onSubmit={handleSubmit}>
                     <div className="space-y-1">
                         <label className="block font-handwriting text-lg text-slate-600 ml-1">Username</label>

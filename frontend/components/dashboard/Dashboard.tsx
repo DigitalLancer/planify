@@ -20,8 +20,6 @@ export default function DashboardPage() {
   const { data: user, isLoading: userLoading, error: userError } = useMe()
   const { data: eventsData, isLoading: eventsLoading, error: eventsError } = useEventsByUserId(user?.id, { enabled: !!user?.id });
 
-  console.log("user data:",user);
-
   useEffect(() => {
     window.onerror = function (msg, source, lineno, colno, error) {
       document.body.innerHTML += `<div style="color:red">${msg}</div>`;
